@@ -19,10 +19,20 @@ WebDriver driver;
     }
 
     @Test
-    public void Test(){
+    public void TestCaseOne(){
        driver.get("https://www.musala.com/");
-       //ContactUsButton.click();
        new Methods(driver).ContactUs();
-       //new Elements(driver).ClickBut();
+    }
+
+    @Test
+    public void TestCaseTwo() throws Exception {
+        driver.get("https://www.musala.com/");
+        new Methods(driver).CompanyTest();
+    }
+
+    @Test
+    public void TestCaseThree() throws  Exception{
+        driver.get("https://www.musala.com/");
+        new Methods(driver).JoinUs();
     }
 }

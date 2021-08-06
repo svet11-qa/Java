@@ -13,9 +13,12 @@ import java.util.concurrent.TimeUnit;
 public class Elements
 {
     protected WebDriver driver;
+    protected WebDriverWait wait;
+
     public Elements(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, (TimeUnit.SECONDS.toSeconds(10)));
     }
     /*public Elements(WebDriver driver)
     {
@@ -27,68 +30,61 @@ public class Elements
     @FindBy(how = How.XPATH, using = "//span[text()='Contact us']")
     protected WebElement ContactUsButton;
 
-    /*public void ClickBut(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", ContactUsButton);
-        ContactUsButton.click();
-    }*/
-      /*  [FindsBy(How = How.XPath, Using = "//span[text()='Contact us']")]
-    protected readonly IWebElement ContactUsButton;
 
-        [FindsBy(How = How.XPath, Using = "//input[@name='your-name']")]  // //span[contains(@class, 'wpcf7-form-control-wrap your-name')]
-    protected readonly IWebElement ContactUsName;
+    @FindBy(how = How.XPATH, using = "//input[@name='your-name']") // //span[contains(@class, 'wpcf7-form-control-wrap your-name')]
+    protected WebElement ContactUsName;
 
-        [FindsBy(How = How.XPath, Using = "//input[@name='your-subject']")]
-    protected readonly IWebElement ContactUsSubject;
+    @FindBy(how = How.XPATH, using = "//input[@name='your-subject']")
+    protected WebElement ContactUsSubject;
 
-        [FindsBy(How = How.XPath, Using = "//textarea[@name='your-message']")]
-    protected readonly IWebElement ContactUsMessage;
+    @FindBy(how = How.XPATH, using = "//textarea[@name='your-message']")
+    protected WebElement ContactUsMessage;
 
-        [FindsBy(How = How.XPath, Using = "//input[@name='your-email']")]
-    protected readonly IWebElement ContactUsEmail;
+    @FindBy(how = How.XPATH, using = "//input[@name='your-email']")
+    protected WebElement ContactUsEmail;
 
-        [FindsBy(How = How.XPath, Using = " //input[@value='Send']")]
-    protected readonly IWebElement ContactUsSend;
+    @FindBy(how = How.XPATH, using = " //input[@value='Send']")
+    protected WebElement ContactUsSend;
 
-        [FindsBy(How = How.XPath, Using = "//span[@class='wpcf7-not-valid-tip']")]
-    protected readonly IWebElement WrongEmailMessage;
+    @FindBy(how = How.XPATH, using = "//span[@class='wpcf7-not-valid-tip']")
+    protected WebElement WrongEmailMessage;
 
-    // [FindsBy(How = How.XPath, Using = "//a[@class='main-link']")]  // //a[contains(text(), 'Company')]
-    // protected readonly IWebElement Company;
+    // @FindBy(how = How.XPATH, using = "//a[@class='main-link']") // //a[contains(text(), 'Company')]
+    // protected WebElement Company;
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='menu']//a[contains(@href, 'https://www.musala.com/company/')]")]
-    protected readonly IWebElement Company;
+    @FindBy(how = How.XPATH, using = "//div[@id='menu']//a[contains(@href, 'https://www.musala.com/company/')]")
+    protected WebElement Company;
 
-        [FindsBy(How = How.XPath, Using = "//section[@class='company-members']//div[@class='cm-content']//h2")]
-    protected readonly IWebElement Leadership;
+    @FindBy(how = How.XPATH, using = "//section[@class='company-members']//div[@class='cm-content']//h2")
+    protected WebElement Leadership;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='links-buttons']//a[contains(@href, 'https://www.facebook.com/MusalaSoft?fref=ts')]")]
-    protected readonly IWebElement FacebookLink;
+    @FindBy(how = How.XPATH, using = "//div[@class='links-buttons']//a[contains(@href, 'https://www.facebook.com/MusalaSoft?fref=ts')]")
+    protected WebElement FacebookLink;
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='menu']//a[contains(@href, 'https://www.musala.com/careers/')]")]
-    protected readonly IWebElement Careers;
+    @FindBy(how = How.XPATH, using = "//div[@id='menu']//a[contains(@href, 'https://www.musala.com/careers/')]")
+    protected WebElement Careers;
 
-        [FindsBy(How = How.XPath, Using = "//section[@class='link_field']/div[@class='link-wrapper']//button[@class='contact-label contact-label-code btn btn-1b']")]
-    protected readonly IWebElement OpenPositions;
+    @FindBy(how = How.XPATH, using = "//section[@class='link_field']/div[@class='link-wrapper']//button[@class='contact-label contact-label-code btn btn-1b']")
+    protected WebElement OpenPositions;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='job-filter']//select[@id='get_location']")]
-    protected readonly IWebElement LocationFilter;
+    @FindBy(how = How.XPATH, using = "//div[@class='job-filter']//select[@id='get_location']")
+    protected WebElement LocationFilter;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='card-container']//h2[text()='Experienced Automation QA Engineer']")]
-    protected readonly IWebElement QAEngineer;
+    @FindBy(how = How.XPATH, using = "//div[@class='card-container']//h2[text()='Experienced Automation QA Engineer']")
+    protected WebElement QAEngineer;
 
-        [FindsBy(How = How.XPath, Using = "//input[@class='wpcf7-form-control wpcf7-submit btn-join-us btn-apply']")]
-    protected readonly IWebElement Apply;
+    @FindBy(how = How.XPATH, using = "//input[@class='wpcf7-form-control wpcf7-submit btn-join-us btn-apply']")
+    protected WebElement Apply;
 
-        [FindsBy(How = How.XPath, Using = "//input[@name='uploadtextfield']")]
-    protected readonly IWebElement UploadFile;
+    @FindBy(how = How.XPATH, using = "//input[@name='uploadtextfield']")
+    protected WebElement UploadFile;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='message-form-content']//div[@class='wpcf7-response-output']")]
-    protected readonly IWebElement ErrorMessage;
+    @FindBy(how = How.XPATH, using = "//div[@class='message-form-content']//div[@class='wpcf7-response-output']")
+    protected WebElement ErrorMessage;
 
-        [FindsBy(How = How.XPath, Using = "//input[@class='wpcf7-form-control wpcf7-submit btn-cf-submit']")]
-    protected readonly IWebElement Send;
+    @FindBy(how = How.XPATH, using = "//input[@class='wpcf7-form-control wpcf7-submit btn-cf-submit']")
+    protected WebElement Send;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='card-container']//a[@href]")]
-    protected readonly IWebElement JobLinks; */
+    @FindBy(how = How.XPATH, using = "//div[@class='card-container']//a[@href]")
+    protected WebElement JobLinks;
 }
