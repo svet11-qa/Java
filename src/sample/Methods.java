@@ -109,3 +109,4 @@ public class Methods extends Elements
         Assert.assertEquals("The error message is not shown or not as expected!",ExpectedMessage, ErrorMessage.getText());
     }
 }
+//test branch 1
