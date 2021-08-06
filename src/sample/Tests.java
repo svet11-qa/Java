@@ -1,5 +1,6 @@
 package sample;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
@@ -34,5 +35,16 @@ WebDriver driver;
     public void TestCaseThree() throws  Exception{
         driver.get("https://www.musala.com/");
         new Methods(driver).JoinUs();
+    }
+
+    @Test
+    public void TestCaseFour(){
+        driver.get("https://www.musala.com/");
+        new Methods(driver).GetPositions();
+    }
+
+    @After
+    public void TearDown(){
+        driver.quit();
     }
 }

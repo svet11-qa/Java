@@ -43,7 +43,7 @@ public class Methods extends Elements
     }
 
     private void LastTab(){
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
     }
 
@@ -107,5 +107,29 @@ public class Methods extends Elements
         Send.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='message-form-content']//div[@class='wpcf7-response-output']"))); //the pop up to be visible
         Assert.assertEquals("The error message is not shown or not as expected!",ExpectedMessage, ErrorMessage.getText());
+    }
+
+    public void GetPositions()
+    {
+        GoToCareers();
+        Select location = new Select(LocationFilter);
+        location.selectByValue("Sofia");
+        //List<WebElement> positionLink = driver.findElements(By.xpath("//div[@class='card-container']//a[@href]"));
+        //List<WebElement> positions = driver.findElements(By.className("card-jobsHot__title"));
+       /* for(WebElement jobLinks:positionLink){
+            for(WebElement jobPosition:positions){
+                System.out.println("Position:" + jobPosition.getText());
+            }
+            System.out.println("Link:" + jobLinks.getAttribute("href"));
+        } */
+
+        List<WebElement> positionLink = new ArrayList<WebElement>(driver.findElements
+                (By.xpath("//div[@class='card-container']//a[@href]")));
+        List<WebElement> positions = new ArrayList<WebElement>(driver.findElements
+                (By.className("card-jobsHot__title")));
+        for(int i = 0; i < positions.stream().count(); i++){
+
+            System.out.println("Sofia \n Position:" +positions.get(i).getText() +"\n" +positionLink.get(i).getAttribute("href") +"\n");
+        }
     }
 }
